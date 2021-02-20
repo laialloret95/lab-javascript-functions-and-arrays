@@ -7,11 +7,16 @@ const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard',
 
 function findLongestWord(array) {
 	let largestWord = "";
-	array.forEach(function(word) {
-		if (word.length > largestWord.length) {
-			largestWord = word;
-		}
-	});
+  
+  if (array.length === 0) {
+      largestWord = null
+  } else {
+	  array.forEach(function(word) {
+      if (word.length > largestWord.length) {
+			  largestWord = word;
+		  }
+	  });
+  }
 	return largestWord
 }
 
@@ -34,19 +39,21 @@ console.log(sumNumbers(numbers));
 // Bonus - Iteration #3.1: A generic sum() function
 const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
 
-function sumMixedArr(array) {
+function sum(array) {
 	let sum = 0;
 	array.forEach(function(item) {
 		if (typeof item === "number" || typeof item === "boolean") {
 			sum += item;
 		} else if (typeof item === "string") {
 			sum += item.length
-		}
+		} else {
+      throw new Error("Unsupported data type sir or ma'am");
+    }
 	});
 	return sum;
 };
 
-console.log(sumMixedArr(mixedArr));
+console.log(sum(mixedArr));
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
@@ -71,7 +78,7 @@ function sumLength(array) {
 }
 
 function averageWordLength(array) {
-	let average = sumLength(array) / array.length
+	let average = (sumLength(array) / array.length).toFixed(2);
 	return average
 }
 
@@ -80,12 +87,12 @@ console.log(averageWordLength(wordsArr));
 // Bonus - Iteration #4.1: A generic avg() function
 const averageMixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
 
-function average(array) {
-	let average = sumMixedArr(array) / array.length
+function avg(array) {
+	let average = sum(array) / array.length
 	return average
 }
 
-console.log(average(averageMixedArr));
+console.log(avg(averageMixedArr));
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -142,7 +149,7 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTime(array, word) {
+function howManyTimes(array, word) {
 	count = 0;
 	array.forEach(function(item) {
 		if (item === word) {
@@ -152,7 +159,7 @@ function howManyTime(array, word) {
 	return count
 };
 
-console.log(howManyTime(wordsCount, 'matter'));
+console.log(howManyTimes(wordsCount, 'matter'));
 
 // Iteration #8: Bonus
 
