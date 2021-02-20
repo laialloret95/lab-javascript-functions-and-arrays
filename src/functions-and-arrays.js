@@ -205,3 +205,42 @@ const matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
+
+function greatestProduct(matrix) {
+	let adjNums = 4 // 4 adjacent values
+
+	const nRows =  matrix.length;
+	const nCols = matrix[0].length;
+
+	let row = [];
+	let column = [];
+	let diagonal = [];
+
+	for (let r = 0; r < nRows; r++) {
+		for (let c = 0; c < nCols; c++) {
+			// 4 elements in row
+			if (c < nCols - (adjNums-1) ) {
+				row.push(matrix[r][c] * matrix[r][c+1] * matrix[r][c+2] * matrix[r][c+3]);
+			}
+;
+			// 4 elements in column
+			if (r < nCols - (adjNums-1) ) {
+				column.push(matrix[r][c] * matrix[r+1][c] * matrix[r+2][c] * matrix[r+3][c]);
+			}
+
+			// 4 elements in diagonal
+			if (r < nRows-(adjNums-1) && c < nCols-(adjNums-1) ) {
+				diagonal.push(matrix[r][c] * matrix[r+1][c+1] * matrix[r+2][c+2] * matrix[r+3][c+3]);
+			}
+
+		greatProductDiagonal = Math.max(...diagonal);
+		greatProductColumn = Math.max(...column);
+		greatProductRow = Math.max(...row);
+
+		greatProduct = Math.max(greatProductColumn,greatProductRow,greatProductDiagonal);
+		}
+	}
+	return greatProduct
+}
+
+console.log(greatestProduct(matrix))
