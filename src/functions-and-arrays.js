@@ -99,12 +99,14 @@ function avg(array) {
   if (array.length === 0) {
     return null;
   } else {
-    let average = sum(array) / array.length;
+    let average = Math.round((sum(array) / array.length)*100)/100;
     return average;
   }
 }
 
 console.log(avg(averageMixedArr));
+
+//Math.round(num * 100) / 100
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -122,13 +124,17 @@ const wordsUnique = [
 ];
 
 function uniquifyArray(array) {
-	uniqueArray = [];
-	array.forEach(function(item) {
-		if (uniqueArray.indexOf(item) === -1) { // -1 if it is not present
-			uniqueArray.push(item);
-		}
-	});
-	return uniqueArray
+  if (array.length === 0) {
+    return null;
+  } else {
+    uniqueArray = [];
+    array.forEach(function(item) {
+      if (uniqueArray.indexOf(item) === -1) { // -1 if it is not present
+        uniqueArray.push(item);
+      }
+    });
+    return uniqueArray
+  }
 };
 
 console.log(uniquifyArray(wordsUnique));
@@ -137,7 +143,9 @@ console.log(uniquifyArray(wordsUnique));
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
 function doesWordExist(array, word) {
-	if (array.includes(word)) {
+  if (array.length === 0) {
+    return null;
+  } else if (array.includes(word)) {
 		return true;
 	} else {
 		return false;
