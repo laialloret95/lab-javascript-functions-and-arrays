@@ -60,8 +60,12 @@ console.log(sum(mixedArr));
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
 function averageNumbers(array) {
-	let average = sumNumbers(array) / array.length;
-	return average;
+  if (array.length === 0) {
+    return null
+  } else {
+	  let average = sumNumbers(array) / array.length;
+	  return average;
+  }
 }
 
 console.log(averageNumbers(numbersAvg));
@@ -78,8 +82,12 @@ function sumLength(array) {
 }
 
 function averageWordLength(array) {
-	let average = (sumLength(array) / array.length).toFixed(2);
-	return average
+  if (array.length === 0) {
+    return null
+  } else {
+    let average = sumLength(array) / array.length;
+    return average
+  }
 }
 
 console.log(averageWordLength(wordsArr));
@@ -88,8 +96,12 @@ console.log(averageWordLength(wordsArr));
 const averageMixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
 
 function avg(array) {
-	let average = sum(array) / array.length
-	return average
+  if (array.length === 0) {
+    return null;
+  } else {
+    let average = sum(array) / array.length;
+    return average;
+  }
 }
 
 console.log(avg(averageMixedArr));
